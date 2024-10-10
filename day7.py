@@ -20,7 +20,7 @@ while not game_over:
     exist = False
     display = ""
     if guess in correct_letter:
-        print("Guess Again!")
+        print("The letter has been existed. Guess Again!")
         continue
     for i in range(0, len(chosen_word)):
         if chosen_word[i] == guess or chosen_word[i] in correct_letter:
