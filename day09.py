@@ -1,6 +1,5 @@
 bids = {}
 continue_bidding = True
-
 def find_highest_bidder(bidding_dictionary):
     highest_bid = 0
     winner = ""
