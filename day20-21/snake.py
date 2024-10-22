@@ -1,0 +1,41 @@
+import turtle
+import time
+
+class Snake:
+    def __init__(self, starting_position):
+        self.segments = []
+        for position in starting_position:
+            self.add_to_segments(position)
+        self.head = self.segments[0]
+    def add_to_segments(self, position):
+        new_segment = turtle.Turtle("square")
+        new_segment.color("white")
+        # new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
+    def update(self, old):
+        self.segments.append(old)
+    def move(self):
+        for index in range(len(self.segments) - 1, 0, -1):
+            self.segments[index].goto(self.segments[index - 1].pos())
+        self.segments[0].forward(20)
+    def left(self):
+        if self.head.heading() != 0:
+            self.head.setheading(180)
+    def right(self):
+        if self.head.heading() != 180:
+            self.head.setheading(0)
+    def up(self):
+        if self.head.heading() != 270:
+            self.head.setheading(90)
+    def down(self):
+        if self.head.heading() != 90:
+            self.head.setheading(270)
+    def eat_itself(self):
+        for i in range(1, len(self.segments)):
+            if self.segments[i].pos() == self.head.pos():
+                return True
+        return False
+            
+
+        
