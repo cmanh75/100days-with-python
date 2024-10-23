@@ -1,11 +1,11 @@
 import turtle
-import time
 
 class Snake:
     def __init__(self, starting_position):
         self.segments = []
         for position in starting_position:
             self.add_to_segments(position)
+        self.old_dir = 0
         self.head = self.segments[0]
     def add_to_segments(self, position):
         new_segment = turtle.Turtle("square")
@@ -16,9 +16,12 @@ class Snake:
     def update(self, old):
         self.segments.append(old)
     def move(self):
+        if abs(self.head.heading() - self.old_dir) == 180:
+            self.head.setheading(self.old_dir)
         for index in range(len(self.segments) - 1, 0, -1):
             self.segments[index].goto(self.segments[index - 1].pos())
         self.segments[0].forward(20)
+        self.old_dir = self.head.heading()
     def left(self):
         if self.head.heading() != 0:
             self.head.setheading(180)

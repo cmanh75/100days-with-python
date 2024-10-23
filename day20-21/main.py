@@ -33,7 +33,6 @@ while True:
         new_scoreboard.update()
         new_scoreboard.refresh()
         new_snake.add_to_segments(old)
-    
     if new_snake.head.xcor() > 290 or new_snake.head.ycor() > 290 or new_snake.head.xcor() < -290 or new_snake.head.ycor() < -290:
         new_scoreboard.gameover()
         break
