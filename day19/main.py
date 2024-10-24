@@ -7,7 +7,6 @@ user_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
 y_position = [-70, -40, -10, 20, 50, 80]
 turtle_list = []
-
 for turtle_index in range(0, 6):
     cmanh = turtle.Turtle(shape="turtle")
     cmanh.penup()
