@@ -23,8 +23,8 @@ screen.onkey(new_snake.right, "Right")
 while True:
     screen.update()
     if new_snake.eat_itself():
-        new_scoreboard.gameover()
-        break
+        new_scoreboard.restart()
+        new_snake.restart(starting_position)
     time.sleep(0.1)
     old = (new_snake.segments[len(new_snake.segments) - 1].xcor(), new_snake.segments[len(new_snake.segments) - 1].ycor());
     new_snake.move()    
@@ -34,6 +34,6 @@ while True:
         new_scoreboard.refresh()
         new_snake.add_to_segments(old)
     if new_snake.head.xcor() > 290 or new_snake.head.ycor() > 290 or new_snake.head.xcor() < -290 or new_snake.head.ycor() < -290:
-        new_scoreboard.gameover()
-        break
+        new_scoreboard.restart()
+        new_snake.restart(starting_position)
 screen.exitonclick() 

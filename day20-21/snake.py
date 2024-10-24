@@ -15,6 +15,14 @@ class Snake:
         self.segments.append(new_segment)
     def update(self, old):
         self.segments.append(old)
+    def restart(self, starting_position):
+        for segment in self.segments:
+            segment.hideturtle()
+        self.segments.clear()
+        for position in starting_position:
+            self.add_to_segments(position)
+        self.old_dir = 0
+        self.head = self.segments[0]
     def move(self):
         if abs(self.head.heading() - self.old_dir) == 180:
             self.head.setheading(self.old_dir)
@@ -36,7 +44,7 @@ class Snake:
             self.head.setheading(270)
     def eat_itself(self):
         for i in range(1, len(self.segments)):
-            if self.segments[i].pos() == self.head.pos():
+            if self.segments[i].distance(self.head.pos()) < 10:
                 return True
         return False
             
